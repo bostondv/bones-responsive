@@ -1,0 +1,62 @@
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: Admin Stylesheet
+
+This stylesheet is loaded (if admin.php is setup in your 
+functions file) on the admin pages. This way you can style 
+the admin pages, especially custom meta boxes.
+
+For more info, check out the codex:
+http://codex.wordpress.org/Creating_Admin_Themes
+
+******************************************************************/
+
+/* Custom columns */
+ .column-id { 
+	width: 50px; 
+}
+.column-image {
+ 	width: 125px;
+}
+
+/* Custom meta boxes default style */
+.my_meta_control {
+	.description {
+	    display: none
+	}
+	label {
+	    display: block;
+	    font-weight: bold;
+	    margin: 1em 0.25em;
+	    margin-bottom: 0;
+	    span {
+		    display: inline;
+		    font-weight: normal;
+		}
+	}
+	p {
+	    margin: 0.5em 0 1em;
+	}
+	span {
+	    color: #999;
+	    display: block;
+	    padding: 0 0.25em;
+	}
+	textarea,
+	input[type='text'] {
+	    margin-bottom: 0.25em;
+	    width: 99%;
+	}
+	.media input[type='text'] {
+	    width: 60%;
+	    margin-right: 0.5em;
+	}
+		h4 {
+	    color: #999;
+	    font-size: 1em;
+	    margin: 1.5em 1em;
+	    text-transform: uppercase;
+	}
+}
