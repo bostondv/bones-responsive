@@ -43,7 +43,7 @@
 		<!-- load all styles for IE -->
 		<!--[if (lt IE 9) & (!IEMobile)]>
     		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/ie.css">	
-		<!--[endif]-->
+		<![endif]-->
 		
 	</head>
 	
