@@ -18,7 +18,7 @@
 						
 						</header> <!-- end article header -->
 					
-						<section class="post_content clearfix" itemprop="articleBody">
+						<section class="post-content clearfix" itemprop="articleBody">
 							<?php the_content(); ?>
 							
 					
@@ -42,7 +42,7 @@
 						    <header>
 						    	<h1>Not Found</h1>
 						    </header>
-						    <section class="post_content">
+						    <section class="post-content">
 						    	<p>Sorry, but the requested resource was not found on this site.</p>
 						    </section>
 						    <footer>

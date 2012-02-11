@@ -14,7 +14,7 @@
 							
 							</header> <!-- end article header -->
 						
-							<section class="post_content">
+							<section class="post-content">
 								
 								<p>The article you were looking for was not found, but maybe try looking again!</p>
 						

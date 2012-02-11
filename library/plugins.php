@@ -36,7 +36,7 @@ function bones_get_socialimage() {
     $socialimg = $src[0];
   } else {
     $socialimg = '';
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post-content, $matches);
     if (array_key_exists(1, $matches))
       if (array_key_exists(0, $matches[1]))
         $socialimg = $matches [1] [0];
