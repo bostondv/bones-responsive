@@ -20,7 +20,7 @@
 							
 							</header> <!-- end article header -->
 						
-							<section class="post_content">
+							<section class="post-content">
 								<?php the_excerpt('<span class="read-more">Read more on "'.the_title('', '', false).'" &raquo;</span>'); ?>
 						
 							</section> <!-- end article section -->
@@ -55,7 +55,7 @@
 						    <header>
 						    	<h1>No Results Found</h1>
 						    </header>
-						    <section class="post_content">
+						    <section class="post-content">
 						    	<p>Sorry, but the requested resource was not found on this site.</p>
 						    </section>
 						    <footer>

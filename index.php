@@ -18,7 +18,7 @@
 							
 							</header> <!-- end article header -->
 						
-							<section class="post_content clearfix">
+							<section class="post-content clearfix">
 								<?php the_content(_e('<span class="read-more">Read more on "'.the_title('', '', false).'" &raquo;</span>', "bonestheme")); ?>
 						
 							</section> <!-- end article section -->
@@ -54,7 +54,7 @@
 						    <header>
 						    	<h1>Not Found</h1>
 						    </header>
-						    <section class="post_content">
+						    <section class="post-content">
 						    	<p>Sorry, but the requested resource was not found on this site.</p>
 						    </section>
 						    <footer>

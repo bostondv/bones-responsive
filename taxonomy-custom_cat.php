@@ -35,7 +35,7 @@ taxonomy-shoes.php
 							
 							</header> <!-- end article header -->
 						
-							<section class="post_content">
+							<section class="post-content">
 							
 								<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
 							
@@ -71,7 +71,7 @@ taxonomy-shoes.php
 						    <header>
 						    	<h1>No Posts Yet</h1>
 						    </header>
-						    <section class="post_content">
+						    <section class="post-content">
 						    	<p>Sorry, but the requested resource was not found on this site.</p>
 						    </section>
 						    <footer>
