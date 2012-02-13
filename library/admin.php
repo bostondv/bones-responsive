@@ -129,10 +129,10 @@ add_filter('admin_footer_text', 'bones_custom_admin_footer');
 
 /************* WPALCHEMY META BOXES *******************/
 
-include_once get_stylesheet_directory_uri() . '/library/wpalchemy/MetaBox.php';
+require_once('wpalchemy/MetaBox.php');
 
 // Inlcude your metabox specs here
-// include_once get_stylesheet_directory_uri() . '/library/metaboxes/simple-spec.php';
+// require_once('metaboxes/simple-spec.php');
 
 /************* CUSTOM ADMIN CSS *******************/
 
