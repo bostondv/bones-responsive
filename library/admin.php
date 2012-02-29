@@ -127,13 +127,6 @@ function bones_custom_admin_footer() {
 // adding it to the admin area
 add_filter('admin_footer_text', 'bones_custom_admin_footer');
 
-/************* WPALCHEMY META BOXES *******************/
-
-require_once('wpalchemy/MetaBox.php');
-
-// Inlcude your metabox specs here
-// require_once('metaboxes/simple-spec.php');
-
 /************* CUSTOM ADMIN CSS *******************/
 
 if (is_admin()) wp_enqueue_style('custom-admin', get_stylesheet_directory_uri() . '/library/css/admin.css');

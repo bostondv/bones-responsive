@@ -8,10 +8,18 @@ just edit things like thumbnail sizes, header images,
 sidebars, comments, ect.
 */
 
+// WPalchemy
+require_once('library/wpalchemy/MetaBox.php');
+require_once('library/wpalchemy/MediaAccess.php');
+$wpalchemy_media_access = new WPAlchemy_MediaAccess();
+
 // Get Bones Core Up & Running!
 require_once('library/bones.php');            // core functions (don't remove)
 require_once('library/plugins.php');          // plugins & extra functions (optional)
 require_once('library/custom-post-type.php'); // custom post type example
+
+// Inlcude your metabox specs here
+// include_once get_stylesheet_directory_uri() . '/library/metaboxes/simple-spec.php';
 
 // Admin Functions (commented out by default)
 // require_once('library/admin.php');         // custom admin functions
