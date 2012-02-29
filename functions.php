@@ -16,7 +16,7 @@ $wpalchemy_media_access = new WPAlchemy_MediaAccess();
 // Get Bones Core Up & Running!
 require_once('library/bones.php');            // core functions (don't remove)
 require_once('library/plugins.php');          // plugins & extra functions (optional)
-require_once('library/custom-post-type.php'); // custom post type example
+require_once('library/types/custom-post-type.php'); // custom post type example
 
 // Inlcude your metabox specs here
 // require_once('library/metaboxes/simple-spec.php');

@@ -85,3 +85,44 @@ add_filter('admin_footer_text', 'bones_custom_admin_footer');
 /************* CUSTOM ADMIN CSS *******************/
 
 if (is_admin()) wp_enqueue_style('custom-admin', get_stylesheet_directory_uri() . '/library/css/admin.css');
+
+/************* CUSTOM COLUMNS *******************/
+
+/* Example of custom adminlist columns
+They are disabled by default and must be modified
+before use. Just delete if you don't need! */
+
+// Define custom columns for custom_type post type
+function bones_custom_type_columns($columns) {
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'id' => __('ID', 'pomelo'),
+		'image' => __('Image', 'pomelo'),
+		'title' => __('Title', 'pomelo'),
+		'url' => __('URL', 'pomelo'),
+		'date' => __('Date', 'pomelo')
+	);
+	return $columns;
+}
+//add_filter('manage_custom_type_posts_columns', 'bones_custom_type_columns');
+
+// Define custom columns contents
+function bones_custom_columns($column, $post_id) {
+	switch ($column) {
+		case 'id':
+			echo $post_id;
+			break;
+		case 'image':
+			add_image_size('admin-thumb', 75, 75, true);
+			the_post_thumbnail('admin-thumb');
+			break;
+		case 'url':
+			global $banner_mb;
+			$banner_mb->the_meta();
+			echo '<a href="' . $banner_mb->get_the_value('url') . '" target="_blank">';
+			$banner_mb->the_value('url');
+			echo '</a>';
+			break;
+	}
+}
+//add_action('manage_posts_custom_column', 'bones_custom_columns', 10, 2);
