@@ -95,8 +95,6 @@ register_taxonomy( 'custom_tag',
 			'singular_name' => __( 'Custom Tag' ), /* single taxonomy name */
 			'search_items' =>  __( 'Search Custom Tags' ), /* search title for taxomony */
 			'all_items' => __( 'All Custom Tags' ), /* all title for taxonomies */
-			'parent_item' => __( 'Parent Custom Tag' ), /* parent title for taxonomy */
-			'parent_item_colon' => __( 'Parent Custom Tag:' ), /* parent taxonomy title */
 			'edit_item' => __( 'Edit Custom Tag' ), /* edit custom taxonomy title */
 			'update_item' => __( 'Update Custom Tag' ), /* update title for taxonomy */
 			'add_new_item' => __( 'Add New Custom Tag' ), /* add new title for taxonomy */
