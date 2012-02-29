@@ -96,11 +96,11 @@ before use. Just delete if you don't need! */
 function bones_custom_type_columns($columns) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
-		'id' => __('ID', 'pomelo'),
-		'image' => __('Image', 'pomelo'),
-		'title' => __('Title', 'pomelo'),
-		'url' => __('URL', 'pomelo'),
-		'date' => __('Date', 'pomelo')
+		'id' => __('ID', 'bones'),
+		'image' => __('Image', 'bones'),
+		'title' => __('Title', 'bones'),
+		'url' => __('URL', 'bones'),
+		'date' => __('Date', 'bones')
 	);
 	return $columns;
 }
