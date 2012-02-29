@@ -19,7 +19,10 @@
 		<meta name="application-name" content="<?php bloginfo('name'); ?>" />
 		
 		<!-- icons & favicons (for more: http://themble.com/support/adding-icons-favicons/) -->
-		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
+		<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/library/images/icon-114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/library/images/icon-72.png">
+		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/icon-57.png">
+		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/library/images/icon.png">
 
 		<!-- normalize, mixins, & mobile stylesheet -->
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/base.css">		
