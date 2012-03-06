@@ -86,43 +86,58 @@ add_filter('admin_footer_text', 'bones_custom_admin_footer');
 
 if (is_admin()) wp_enqueue_style('custom-admin', get_stylesheet_directory_uri() . '/library/css/admin.css');
 
-/************* CUSTOM COLUMNS *******************/
+/************* MANAGE POSTS *******************/
 
-/* Example of custom adminlist columns
-They are disabled by default and must be modified
-before use. Just delete if you don't need! */
+/**
+ * Filter the request to just give posts for the given taxonomy, if applicable.
+ */
+function bones_taxonomy_filter() {
+	global $typenow;
 
-// Define custom columns for custom_type post type
-function bones_custom_type_columns($columns) {
-	$columns = array(
-		'cb' => '<input type="checkbox" />',
-		'id' => __('ID', 'bones'),
-		'image' => __('Image', 'bones'),
-		'title' => __('Title', 'bones'),
-		'url' => __('URL', 'bones'),
-		'date' => __('Date', 'bones')
-	);
-	return $columns;
-}
-//add_filter('manage_custom_type_posts_columns', 'bones_custom_type_columns');
+	// If you only want this to work for your specific post type,
+	// check for that $type here and then return.
+	// This function, if unmodified, will add the dropdown for each
+	// post type / taxonomy combination.
 
-// Define custom columns contents
-function bones_custom_columns($column, $post_id) {
-	switch ($column) {
-		case 'id':
-			echo $post_id;
-			break;
-		case 'image':
-			add_image_size('admin-thumb', 75, 75, true);
-			the_post_thumbnail('admin-thumb');
-			break;
-		case 'url':
-			global $banner_mb;
-			$banner_mb->the_meta();
-			echo '<a href="' . $banner_mb->get_the_value('url') . '" target="_blank">';
-			$banner_mb->the_value('url');
-			echo '</a>';
-			break;
+	$post_types = get_post_types(array('_builtin' => false ));
+
+	if (in_array($typenow, $post_types)) {
+		$filters = get_object_taxonomies($typenow);
+
+		foreach ($filters as $tax_slug) {
+			$tax_obj = get_taxonomy($tax_slug);
+			wp_dropdown_categories( 
+				array(
+					'show_option_all' => __('Show All '.$tax_obj->label, 'skeleton'),
+					'taxonomy' 	  => $tax_slug,
+					'name' 		  => $tax_obj->name,
+					'orderby' 	  => 'name',
+					'selected' 	  => $_GET[$tax_slug],
+					'hierarchical' 	  => $tax_obj->hierarchical,
+					'show_count' 	  => false,
+					'hide_empty' 	  => true
+				) 
+			);
+		}
 	}
 }
-//add_action('manage_posts_custom_column', 'bones_custom_columns', 10, 2);
+add_action('restrict_manage_posts','bones_taxonomy_filter');
+
+/**
+ * Add a filter to the query for the dropdowns
+ */
+function bones_taxonomy_filter_request($query) {
+	global $pagenow, $typenow;
+
+	if ('edit.php' == $pagenow) {
+		$filters = get_object_taxonomies( $typenow );
+		foreach ( $filters as $tax_slug ) {
+			$var = &$query->query_vars[$tax_slug];
+			if ( isset( $var ) ) {
+				$term = get_term_by( 'id', $var, $tax_slug );
+				$var = $term->slug;
+			}
+		}
+	}
+}
+add_filter('parse_query', 'bones_taxonomy_filter_request');
