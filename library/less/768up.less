@@ -76,77 +76,90 @@ LAYOUT & GRID STYLES
 	max-width: 960px;
 }
 	/***** Grid Options down here, where they are usable ******/
-	/* layout options ( all have margins right & left of 1%) */
-	.col60  { width: 6.3829787%; } /* width 60px  / grid_1  */
-	.col140 { width: 14.893617%; } /* width 140px / grid_2  */
-	.col220 { width: 23.404255%; } /* width 220px / grid_3  */
-	.col300 { width: 31.914894%; } /* width 300px / grid_4  */
-	.col380 { width: 40.425532%; } /* width 380px / grid_5  */
-	.col480 { width: 48.936170%; } /* width 480px / grid_6  */
-	.col540 { width: 57.446809%; } /* width 540px / grid_7  */
-	.col620 { width: 65.957447%; } /* width 620px / grid_8  */
-	.col700 { width: 74.468085%; } /* width 700px / grid_9  */
-	.col780 { width: 82.978723%; } /* width 780px / grid_10 */
-	.col860 { width: 91.489362%; } /* width 860px / grid_11 */
-	.col940 { width: 100.0%;     } /* width 940px / grid_12 */
+	/* This is using the 1140 Grid System: http://cssgrid.net/ */
+	.onecol    { width: 4.85%;  } /* grid_1  */
+	.twocol    { width: 13.45%; } /* grid_2  */
+	.threecol  { width: 22.05%; } /* grid_3  */
+	.fourcol   { width: 30.75%; } /* grid_4  */
+	.fivecol   { width: 39.45%; } /* grid_5  */
+	.sixcol    { width: 48%;    } /* grid_6  */
+	.sevencol  { width: 56.75%; } /* grid_7  */
+	.eightcol  { width: 65.4%;  } /* grid_8  */
+	.ninecol   { width: 74.05%; } /* grid_9  */
+	.tencol    { width: 82.7%;  } /* grid_10 */
+	.elevencol { width: 91.35%; } /* grid_11 */
+	.twelvecol { width: 100%;   } /* grid_12 */
 	
 	/* layout & column defaults */
-	.col60, .col140, .col220, .col300, .col380, .col480, .col540, .col620, .col700, .col780, .col860, .col940 { 
-		display: inline; 
+	.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol { 
 		float: left; 
 		position: relative;
-		margin-left: 1.0638298%;   /* 10px */ 
-		margin-right: 1.0638298%;  /* 10px */
+		margin-right: 3.8%; 
 	}
 	
-	/* floats */
-	.left { float: left; }
-	.right { float: right; }
+	/* adding float to large column */
+	.twelvecol {
+		float: left;
+		position: relative;
+	}
 	
 	/* default styles & fixes */
-	.first { margin-left: 0; } /* fixes alignment */
-	.last { margin-right: 0; } /* fixes alignment */
+	.last  { 
+		margin-right: 0; 
+		float: right;
+	}
 
 /*********************
 HEADER SYTLES
 *********************/
 
-.header {
+.header {}
+
 	#logo {}
-}
 	
 /*********************
 NAVIGATION STYLES
 *********************/
 
-.nav {
+.nav {}
+
+	/* .menu is clearfixed inside mixins.less */
 	.menu {
 		ul {
-			background: #eee;
+			background: #eee; 
+			
 			li {
 				float: left;
 				position: relative;
+				
 				a {
 					border-bottom: 0;
-					&:hover {
+					
+					/*
+					you can use hover styles here even though this size
+					has the possibility of bieng a mobile device.
+					*/
+					&:hover, &:focus {
 						background-color: #dedede;
+					
 					}
 				}
-				&:first-child a {}
-				&:last-child a {}	
-						
-				/* highlight current page */
-				&.current-menu-item a, 
-				&.current_page_item a,
-				&.current-page-ancestor a {}
-
-				ul {
+				
+				&:first-child {}
+				&:last-child {}
+				
+				/*
+				plan your menus and drop-downs wisely.
+				*/
+				ul.sub-menu,
+				ul.children {
 					width: 200px;
 					border: 1px solid #ccc;
 					border-top: 0;
 					position: absolute;
 					display: none;
 					z-index: 8999;
+						
 					li {
 						a {
 							padding-left: 10px;
@@ -155,26 +168,49 @@ NAVIGATION STYLES
 							width: 180px;
 							border-bottom: 1px solid #ccc;
 							
+							&:hover,
+							&:focus {}
+							&:link {}
 						}
-						&:first-child a {}
-					}
-
-					/* more levels */
-					ul {}
-				}
-
-				/* show the dropdowns on hover */
-				&:hover {
-					ul {
-						top: auto;
-						display: block;
+						&:first-child {}
+						&:last-child {
+							a {
+								border-bottom: 0;
+							}
+						}
+						
+						/*
+						if you need to go deeper, go nuts
+						just remember deeper menus suck
+						for usability. k, bai.
+						*/
 						ul {}
 					}
+					
+					/* highlight sub-menu current page */
+					li.current-menu-item, 
+					li.current_page_item,
+					li.current-page-ancestor {
+						a {}
+					}
 				}
-			}
-		}
-	}
-}
+				
+				/* showing sub-menus */
+				&:hover ul {
+					top: auto;
+					display: block;
+				}
+				
+			} /* end .menu ul li */
+			
+			/* highlight current page */
+			li.current-menu-item, 
+			li.current_page_item,
+			li.current-page-ancestor {
+				a {}
+			}  /* end current highlighters */
+		} /* end .menu ul */
+	} /* end .menu */
 
 
 /*********************
@@ -183,66 +219,69 @@ POSTS & CONTENT STYLES
 
 #content {}
 	
-	.hentry {}
+		.hentry {
+			header {}
+			footer {}
+		} /* end .hentry */
+		
+		.single-title, 
+		.page-title {}
+		.single-title {}
+		.page-title {}
+		.archive_title { }
 	
-	.single-title, 
-	.page-title {}
-	.single-title {}
-	.page-title {}
-	.archive_title { }
-
-	/* want to style individual post classes? Booya! */
-	.post-id {} /* post by id (i.e. post-3) */
-	.post {} /* general post style */
-	.page {} /* general article on a page style */
-	.attachment {} /* general style on an attatchment */
-	.sticky {} /* sticky post style */
-	.hentry {} /* hentry class */
-	.category-slug {} /* style by category (i.e. category-videos) */
-	.tag-slug {} /* style by tag (i.e. tag-news) */
-
-	/* post meta */
-	.meta {
-		time {}
-	}
-
-	/* post content */
-	.post-content {	
-			
-		p {}
-
-		ul, 
-		ol {
-			li {}
-		} 
-
-		table {}
-		
-		blockquote {
-			&:before {} /* this adds the quote before the blockquote */
+		/* want to style individual post classes? Booya! */
+		.post-id {} /* post by id (i.e. post-3) */
+		.post {} /* general post style */
+		.page {} /* general article on a page style */
+		.attachment {} /* general style on an attatchment */
+		.sticky {} /* sticky post style */
+		.hentry {} /* hentry class */
+		.category-slug {} /* style by category (i.e. category-videos) */
+		.tag-slug {} /* style by tag (i.e. tag-news) */
+	
+		/* post meta */
+		.meta {
+			time {}
 		}
-		
-		dl {}
-		dt {}
-		dd {}
-		
-		img {}
-		
-		.alignleft, img.alignleft {}
-		.alignright, img.alignright {}
-		.aligncenter, img.aligncenter {}
-		
-		video, 
-		object {}
-		
-		pre, 
-		code {}
-		
+			
+		/* post content */
+		.post-content {
+			p {}
+			ul, ol, table, dl {}
+			ul, ol {
+				li {}
+			}
+			ul {
+				li {}
+			}
+			ol {
+				li {}
+			}
+			blockquote {	
+				&:before {}
+			}
+			dl {}
+			dt {}
+			dd {}
+			
+			img {}
+			
+			/* at this larger size, we can start to align images */
+			.alignleft, img.alignleft {}
+			.alignright, img.alignright {}
+			.aligncenter, img.aligncenter {}
+			
+			video, object {}
+			pre, code {}
+		} /* end .post-content */
+			
 		.wp-caption {
+			/* images inside wp-caption */
 			img {}
 			p.wp-caption-text {}
-		}
-		
+		} /* end .wp-caption */
+			
 		/* image gallery styles */
 		.gallery {
 			dl {
@@ -251,16 +290,15 @@ POSTS & CONTENT STYLES
 			}
 			dt {}
 			dd {}
-		}
+		} /* end .gallery */
+		
+		/* gallery caption styles */	
 		.gallery-caption {}
 		
 		.size-full {}
 		.size-large {}
 		.size-medium {}
 		.size-thumbnail {}
-	}
-		
-	.hentry footer {}		
 
 /******************************************************************
 PAGE NAVI STYLES
@@ -268,66 +306,72 @@ PAGE NAVI STYLES
 
 .page-navigation, 
 .wp-prev-next {}
-	.bones_page_navi { 
-		li { 
+
+	.bones_page_navi {	
+		li {
+			a {	
+				&:hover, 
+				&:focus {}
+			}
+		}
+		
+		/* current page link */	
+		li.bpn-current { 
 			a {
-				&:hover {}
-			}
-
-			/* current page link */	
-			&.bpn-current {
 				/* hovering on current page link */
-				&:hover {}
+				&:hover,
+				&:focus {}
 			}
-
-			/* common styles for page-navi links */
-			&.bpn-prev-link,
-			&.bpn-next-link { 
-				a {
-					&:hover {}
-				}
-			}
-			&.bpn-first-page-link a:hover, 
-			&.bpn-last-page-link a:hover {}
-
-			/* previous link */
-			&.bpn-prev-link { 
-				a {
-					&:hover {}
-				}
-			}
-			
-			/* next page link */		
-			&.bpn-next-link {
-				a {
-					&:hover {}
-				}
-			}
-					
-			/* first page link */
-			&.bpn-first-page-link {
-				a {
-					&:hover {}
-				}
-			}
-			
-			/* last page link */
-			&.bpn-last-page-link {
-				a {
-					&:hover {}
-				}
+		} /* end .bones_page_navi .bpn-current */
+		
+		/* common styles for page-navi links */
+		li.bpn-prev-link, 
+		li.bpn-next-link {
+			a {}
+		}
+		
+		/* remove the bg on end links */
+		li.bpn-prev-link a:hover, 
+		li.bpn-next-link a:hover, 
+		li.bpn-first-page-link a:hover, 
+		li.bpn-last-page-link a:hover {} 
+		
+		/* previous link */
+		li.bpn-prev-link { 
+			a {
+				&:hover,
+				&:focus {}
 			}
 		} 
-	}
-
+		
+		/* next page link */		
+		li.bpn-next-link { 
+			a {
+				&:hover,
+				&:focus {}
+			}
+		} 
+				
+		/* first page link */
+		li.bpn-first-page-link {
+			a {
+				&:hover,
+				&:focus {}
+			}
+		} 
+		
+		/* last page link */
+		li.bpn-last-page-link {
+			a {}
+		} 
+	} /* end .bones_page_navi */
+	
 	/* fallback previous & next links */
 	.wp-prev-next {
 		ul {}
 		.prev-link {}
 		.next-link {}
-	}
-
-
+	} /* end .wp-prev-next */
 
 /******************************************************************
 COMMENT STYLES
@@ -335,7 +379,8 @@ COMMENT STYLES
 
 /* h3 comment title */
 #comments {
-	span {} /* number of comments span */
+	/* number of comments span */
+	span {}
 }
 	
 .comment-nav {
@@ -343,35 +388,38 @@ COMMENT STYLES
 		li {}
 	}
 }
-
-.commentlist {
-	li {
-		&[class*=depth-] {}
-		&.depth-1 {}
-		&:not(.depth-1) {}
-		&.depth-2 {}
-		&.depth-3 {}
-		&.depth-4 {}
-		&.depth-5 {}
+		
+.commentlist {	
+	li { 
 		&:last-child {}
+		
 		ul.children {
-			li {
-				.alt {}
-				.byuser {}
-				.comment {}
-				.depth-1 {} /* change number for different depth */
-				.bypostauthor {}
-				.comment-author-admin {}
-			}
+			li {}
+			
+			/* variations */
+			.comment {}
 			.alt {}
 			.odd {}
 			.even {}
-		}
-		.comment_content {
-			p {}
-		}
-		ul {}
+			.depth-1 {} /* change number for different depth */
+			.byuser {}
+			.bypostauthor {}
+			.comment-author-admin {}
+		
+		} /* end .commentlist li ul.children */
 	}
+	
+	li[class*=depth-] {}
+	li.depth-1 {}
+	
+	li:not(.depth-1) {}
+	
+	li.depth-2 {}
+	li.depth-3 {}
+	li.depth-4 {}
+	li.depth-5 {}
+	
+	/* general comment classes */
 	.alt {}
 	.odd {}
 	.even {}
@@ -385,76 +433,91 @@ COMMENT STYLES
 	.thread-alt {}
 	.thread-odd {}
 	.thread-even {}	
-	
-	.vcard {
+			
+	/* vcard */
+	.vcard { 
+		
 		cite.fn {
 			a.url {}
 		}
+		
 		time {
-			a { 
+			a {
 				&:hover {}
 			}
 		}
+		
 		img.photo {}
 		img.avatar {}
-	}
+	} /* end .commentlist .vcard */
 
+	/* comment meta */
 	.comment-meta {
 		a {}
-	}
+	} 
 	.commentmetadata {
 		a {}
 	}
-	.comment-reply-link {}
-	a.comment-reply-link:hover {}
-}
+	
+	/* comment content */
+	.comment_content {
+		p {}
+	} /* end .commentlist .comment_content */
+	
+	/* comment reply link */
+	.comment-reply-link {
+		&:hover,
+		&:focus {}
+	} /* end .commentlist .comment-reply-link */
+		
+} /* end .commentlist */
 
 /******************************************************************
 COMMENT FORM STYLES
 ******************************************************************/
 
-.respond-form { 
-	margin: 1.5em 20px; 
+.respond-form {
+	form {
+		li {	
+			label,
+			small {}
+		}
+		
+		input[type=text], 
+		input[type=email], 
+		input[type=url], 
+		textarea {
+			&:focus {}
+			/* form validation */
+			&:invalid {}
+		}
+		
+		input[type=text],
+		input[type=email], 
+		input[type=url] {}
+		textarea {}
+	}
+}
 	
+	/* comment submit button */
+	#submit {}
+	
+	/* comment form title */
 	#comment-form-title {}
 	
+	/* cancel comment reply link */
 	#cancel-comment-reply {
 		a {}
 	}
 			
-	form { 
-		.comments-logged-in-as {}
+	/* logged in comments */
+	.comments-logged-in-as {}
 		
-		li { 
-			label, 
-			small {}
-		}
-	}
-	input[type=text], 
-	input[type=email], 
-	input[type=url], 
-	textarea {
-		&:focus {}
-	}
-			
-	input[type=text], 
-	input[type=email], 
-	input[type=url] {}
-	
-	textarea {}
-	
-	#allowed_tags {}
-	
-	#submit {}
-		
-	/* form validation */
-	input:invalid, 
-	textarea:invalid {}		
+	/* allowed tags */
+	#allowed_tags {}		
 	
 	/* no comments */
-	.nocomments {}
-}			
-
+	.nocomments {}		
 
 /*********************
 SIDEBARS & ASIDES
@@ -464,129 +527,107 @@ SIDEBARS & ASIDES
 	margin-top: 2.2em;
 }
 
+	.widgettitle {
+		border-bottom: 2px solid #444;
+		margin-bottom: 0.75em;
+	}
+
 	.widget {
 		padding: 0 10px;
 		margin: 2.2em 0;
-		.widgettitle {
-			border-bottom: 2px solid #444;
-			margin-bottom: 0.75em;
-		}
-		ul {}
-		li {
-			margin-bottom: 0.75em;
-			&:first-child {}
-			&:last-child {}
-			a {}
-			ul {
-				margin-top: 0.75em;
-				padding-left: 1em;
-			}
-		}
-	}
-
-	/* links widget */
-	.widget_links {
+		
 		ul {
 			li {
+				margin-bottom: 0.75em;
+				
+				&:first-child {}
+				&:last-child {}
 				a {}
+				/* deep nesting */
+				
+				ul {
+					margin-top: 0.75em;
+					padding-left: 1em;
+				}
 			}
 		}
 	}
+	
+	/* links widget */
+	.widget_links {}
+	.widget_links ul {}
+	.widget_links ul li {}
+	.widget_links ul li a {}
 	
 	/* meta widget */
-	.widget_meta {
-		ul {
-			li {
-				a {}
-			}
-		}
-	}
+	.widget_meta {}
+	.widget_meta ul {}
+	.widget_meta ul li {}
+	.widget_meta ul li a {}
 	
 	/* pages widget */
-	.widget_pages {
-		ul {
-			li {
-				a {}
-			}
-		}
-	}
+	.widget_pages {}
+	.widget_pages ul {}
+	.widget_pages ul li {}
+	.widget_pages ul li a {}
 	
 	/* recent-posts widget */
-	.widget_recent_entries {
-		ul {
-			li {
-				a {}
-			}
-		}
-	}
+	.widget_recent_entries {}
+	.widget_recent_entries ul {}
+	.widget_recent_entries ul li {}
+	.widget_recent_entries ul li a {}
 	
 	/* archives widget */
-	.widget_archive {
-		ul {
-			li {
-				a {}
-			}
-		}
-		select {}
-		option {}
-	}
+	.widget_archive {}
+	.widget_archive ul {}
+	.widget_archive ul li {} 
+	.widget_archive ul li a {}
+	.widget_archive select {}
+	.widget_archive option {}
 	
 	/* tag-cloud widget */
-	.widget_links {
-		li:after {}
-		li:before {}
-	}
-	.widget_tag_cloud {
-		a {
-			&:after {}
-			&:before {}
-		}
-	}
+	.widget_links {}
+	.widget_links li:after {}
+	.widget_links li:before {}
+	.widget_tag_cloud {}
+	.widget_tag_cloud a {}
+	.widget_tag_cloud a:after {}
+	.widget_tag_cloud a:before {}
 	
 	/* calendar widget */
 	.widget_calendar {}
-	#calendar_wrap {
-		th {}
-		td {}
-	}
-	#wp-calendar {
-		tr td {}
-		caption {}
-		a {}
-		#today {}
-		#prev {
-			a {}
-		}
-		#next {
-			a{}
-		}
-	}
+	#calendar_wrap {}
+	#calendar_wrap th {}
+	#calendar_wrap td {}
+	#wp-calendar tr td {}
+	#wp-calendar caption {}
+	#wp-calendar a {}
+	#wp-calendar #today {}
+	#wp-calendar #prev {}
+	#wp-calendar #next {}
+	#wp-calendar #next a {}
+	#wp-calendar #prev a {}
 	
 	/* category widget */
-	.widget_categories {
-		ul {
-			li {} 
-			ul.children {}
-		}
-		a {}
-		select {
-			&#cat {}
-			&.postform {}
-		}
-		option {}
-		.level-0 {}
-		.level-1 {}
-		.level-2 {}
-		.level-3 {}
-	}
+	.widget_categories {}
+	.widget_categories ul {}
+	.widget_categories ul li {} 
+	.widget_categories ul ul.children {}
+	.widget_categories a {}
+	.widget_categories select{}
+	.widget_categories select#cat {}
+	.widget_categories select.postform {}
+	.widget_categories option {}
+	.widget_categories .level-0 {}
+	.widget_categories .level-1 {}
+	.widget_categories .level-2 {}
+	.widget_categories .level-3 {}
 	
 	/* recent-comments widget */
 	.recentcomments {}
-	#recentcomments {
-		li {
-			a {}
-		}
-	}
+	#recentcomments {}
+	#recentcomments li {}
+	#recentcomments li a {}
 	.widget_recent_comments {}
 	
 	/* search widget */
@@ -595,10 +636,9 @@ SIDEBARS & ASIDES
 	.screen-reader-text {}
 	
 	/* text widget */
-	.textwidget {
-		p {}
-	}
+	.textwidget {}
 	.widget_text {}
+	.textwidget p {}
 	
 
 /*********************
@@ -613,22 +653,22 @@ FOOTER STYLES
 	mobile. Make sure to double check these!
 	*/
 	.footer-links {
-		ul {}
-		li {
-			a {
-				/* hover styles */
-				&:hover {} 
+		ul {
+			li {
+				a {
+					&:hover {}
+				}
+				/* 
+				be careful with the depth of your menus.
+				it's very rare to have multi-depth menus in
+				the footer.
+				*/
+				ul {}
 			}
 		}
-		/* highlight current page */	
-		.nav li.current-menu-item a, 
-		.nav li.current_page_item a {}
-		
-		/* be careful with the depth of your menus */
-		.sub-menu {}
-	}	
+	} /* end .footer-links */
 			
 	.attribution {}
-	
+		
 
 } /* end of the function (DO NOT DELETE) */

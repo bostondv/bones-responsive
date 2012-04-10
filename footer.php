@@ -14,9 +14,6 @@
 		
 		</div> <!-- end #container -->
 		
-		<!-- scripts are now optimized via Modernizr.load -->	
-		<script src="<?php echo get_template_directory_uri(); ?>/library/js/scripts.js"></script>
-		
 		<?php wp_footer(); // js scripts are inserted using this function ?>
 
 	</body>

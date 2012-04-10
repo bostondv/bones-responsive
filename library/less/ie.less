@@ -22,9 +22,9 @@ let's now call the FUNCTIONS for these different stylesets. This
 doesn't load the CSS, the CSS is loaded directly below.
 */
 
-@import "481up";
-@import "768up";
-@import "992up";
+@import "481up.less";
+@import "768up.less";
+@import "1030up.less";
 /* 
 you can call the larger styles if you want, but there's really no need 
 */
@@ -37,7 +37,7 @@ responsive stylesheet.
 
 .481up();
 .768up();
-.992up();
+.1030up();
 
 /******************************************************************
 ADDITIONAL IE FIXES
@@ -46,6 +46,16 @@ about using prefixes, although it's best practice. For more info
 on using Modernizr classes, check out this link:
 http://www.modernizr.com/docs/
 ******************************************************************/
+
+/* grid fixes for IE8 & older */
+.lt-ie9 {	
+	.onecol   { width: 4.7%;   }
+	.twocol   { width: 13.2%;  }
+	.fourcol  { width: 30.06%; }
+	.fivecol  { width: 39%;    }
+	.eightcol { width: 61.6%;  }
+	.tencol   { width: 82%;    }
+}
 
 /*
 For example, you can use something like:

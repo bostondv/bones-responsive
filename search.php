@@ -4,7 +4,7 @@
 			
 				<div id="inner-content" class="wrap clearfix">
 			
-					<div id="main" class="col700 left first clearfix" role="main">
+					<div id="main" class="ninecol clearfix" role="main">
 					
 						<h1 class="archive_title"><span>Search Results for:</span> <?php echo esc_attr(get_search_query()); ?></h1>
 					
@@ -41,8 +41,8 @@
 						<?php } else { // if it is disabled, display regular wp prev & next links ?>
 							<nav class="wp-prev-next">
 								<ul class="clearfix">
-									<li class="prev-link"><?php next_posts_link(_e('&laquo; Older Entries', "bonestheme")) ?></li>
-									<li class="next-link"><?php previous_posts_link(_e('Newer Entries &raquo;', "bonestheme")) ?></li>
+									<li class="next-link"><?php next_posts_link(__('&laquo; Older Entries', "bonestheme")) ?></li>
+									<li class="prev-link"><?php previous_posts_link(__('Newer Entries &raquo;', "bonestheme")) ?></li>
 								</ul>
 							</nav>
 						<?php } ?>			
@@ -66,7 +66,7 @@
 					
 					</div> <!-- end #main -->
     				
-    				<div id="sidebar1" class="sidebar col220 right last">
+    				<div id="sidebar1" class="sidebar twocol last">
     					
     					<?php get_search_form(); ?>
     				

@@ -19,7 +19,7 @@ single-bookmarks.php
 			
 				<div id="inner-content" class="wrap clearfix">
 			
-					<div id="main" class="col620 left first clearfix" role="main">
+					<div id="main" class="eightcol clearfix" role="main">
 					
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 						

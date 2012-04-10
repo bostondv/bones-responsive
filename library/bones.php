@@ -27,10 +27,6 @@ function bones_head_cleanup() {
 	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );             // start link
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // Links for Adjacent Posts
 	remove_action( 'wp_head', 'wp_generator' );                           // WP version
-	if (!is_admin()) {
-		wp_deregister_script('jquery');                                   // De-Register jQuery
-		wp_register_script('jquery', '', '', '', true);                   // It's already in the Header
-	}	
 }
 	// launching operation cleanup
 	add_action('init', 'bones_head_cleanup');
@@ -38,11 +34,39 @@ function bones_head_cleanup() {
 	function bones_rss_version() { return ''; }
 	add_filter('the_generator', 'bones_rss_version');
 	
-// loading jquery reply elements on single pages automatically
-function bones_queue_js(){ if (!is_admin()){ if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) wp_enqueue_script( 'comment-reply' ); }
+// loading modernizr and jquery, and reply elements on single pages automatically
+function bones_queue_high_js_and_css() {
+  if (!is_admin()) {
+	  // modernizr (without media query polyfill)
+    wp_register_script( 'modernizr', get_template_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.1', false );
+    wp_enqueue_script( 'modernizr' );
+    wp_enqueue_script( 'jquery' );
+    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
+      wp_enqueue_script( 'comment-reply' );
+    }
+
+	//adding scripts file in the footer
+    wp_register_script( 'bones-js', get_template_directory_uri() . '/library/js/scripts.js', array( 'modernizr', 'jquery' ), '2012-02-15-1537', true );
+    wp_enqueue_script( 'bones-js' );
+
+	// register mobile stylesheet
+    wp_register_style( 'bones-base', get_template_directory_uri() . '/library/css/base.css', array(), '2011-11-04T15:38', 'all' );
+    wp_enqueue_style( 'bones-base' );
+  }
 }
-	// reply on comments script
-	add_action('wp_print_scripts', 'bones_queue_js');
+	// enqueue base scripts and styles
+	add_action('wp_enqueue_scripts', 'bones_queue_high_js_and_css', 1);
+
+// loading responsive scripts and styles
+function bones_queue_low_js_and_css() {
+  if (!is_admin()) {
+	// responsive stylesheet for those browsers that can read it
+    wp_register_style( 'bones-responsive', get_template_directory_uri() . '/library/css/style.css', array(), '2011-11-04T15:38', '(min-width:481px)' );
+    wp_enqueue_style( 'bones-responsive' );
+  }
+}
+	// enqueue responsive scripts and styles
+	add_action('wp_enqueue_scripts', 'bones_queue_low_js_and_css', 999);
 
 // Fixing the Read More in the Excerpts
 // This removes the annoying […] to a Read More link

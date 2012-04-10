@@ -12,6 +12,14 @@ Author: Eddie Machado
 BONES CHANGE LOG & HISTORY
 ******************************************************************/
 
+/* v1.11 update */
+- changed post_content to post-content for consistency
+- reworked LESS files w/ nesting
+- removed jQuery from the header (OH NOES!)
+- updated scripts to comply with wp best practices
+- changed from 960gs to 1140gs
+- changed template files to reflect new grid system
+
 /* v1.1 updates */
 - updated normalize.css
 - added classes to html5 elements for IE & faster CSS (header, nav, footer)

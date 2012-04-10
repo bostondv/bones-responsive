@@ -4,7 +4,7 @@
 				
 				<div id="inner-content" class="wrap clearfix">
 			
-					<div id="main" class="col620 left first clearfix" role="main">
+					<div id="main" class="eightcol clearfix" role="main">
 					
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 						
@@ -28,10 +28,11 @@
 							<?php the_tags('<p class="tags"><span class="tags-title">Tags:</span> ', ', ', '</p>'); ?>
 							
 						</footer> <!-- end article footer -->
+						
+						<?php comments_template(); ?>
 					
 					</article> <!-- end article -->
 						
-						<?php comments_template(); ?>
 						
 						<?php endwhile; ?>		
 						

@@ -4,7 +4,7 @@ Author: Eddie Machado
 
 This file should contain any js scripts you want to add to the site.
 Instead of calling it in the header or throwing it inside wp-head()
-this file will be called automatically in the footer so as not to 
+this file will be called automatically in the footer so as not to
 slow the page load.
 
 */
@@ -21,7 +21,7 @@ Modernizr.load([
 
 
 // as the page loads, call these scripts
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 	
 	// add all your scripts here
 	
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 
 // HTML5 Fallbacks for older browsers
-$(function() {
+jQuery(function($) {
     // check placeholder browser support
     if (!Modernizr.input.placeholder) {
         // set placeholder values
@@ -40,12 +40,12 @@ $(function() {
  
         // focus and blur of placeholders
         $('[placeholder]').focus(function() {
-            if ($(this).val() == $(this).attr('placeholder')) {
+            if ($(this).val() === $(this).attr('placeholder')) {
                 $(this).val('');
                 $(this).removeClass('placeholder');
             }
         }).blur(function() {
-            if ($(this).val() == '' || $(this).val() == $(this).attr('placeholder')) {
+            if ($(this).val() === '' || $(this).val() === $(this).attr('placeholder')) {
                 $(this).val($(this).attr('placeholder'));
                 $(this).addClass('placeholder');
             }
@@ -54,7 +54,7 @@ $(function() {
         // remove placeholders on submit
         $('[placeholder]').closest('form').submit(function() {
             $(this).find('[placeholder]').each(function() {
-                if ($(this).val() == $(this).attr('placeholder')) {
+                if ($(this).val() === $(this).attr('placeholder')) {
                     $(this).val('');
                 }
             });
@@ -107,7 +107,7 @@ $(function() {
         if( !w.orientation && ( x > 7 || ( ( z > 6 && y < 8 || z < 8 && y > 6 ) && x > 5 ) ) ){
 			if( enabled ){
 				disableZoom();
-			}        	
+			}
         }
 		else if( !enabled ){
 			restoreZoom();
