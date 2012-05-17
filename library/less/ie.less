@@ -1,15 +1,11 @@
-/******************************************************************
-Site Name: 
-Author: 
-
+/*
 Stylesheet: IE Stylesheet
 
 So instead of using the respond.js file to add media query support
 to IE, we're going to use LESS to create an easily readable css file.
 Here, we import all the styles the standard stylesheet gets, only
 without the media queries. No need to worry about editing anything!
-
-******************************************************************/
+*/
 
 /*
 Base.css contains the main mobile styles and is called in the 
@@ -25,9 +21,8 @@ doesn't load the CSS, the CSS is loaded directly below.
 @import "481up.less";
 @import "768up.less";
 @import "1030up.less";
-/* 
-you can call the larger styles if you want, but there's really no need 
-*/
+
+/* you can call the larger styles if you want, but there's really no need */
 
 /*
 Now we call the functions that contain all the CSS. This means
@@ -39,13 +34,16 @@ responsive stylesheet.
 .768up();
 .1030up();
 
-/******************************************************************
-ADDITIONAL IE FIXES
+
+/* =Additional IE fixes
+-------------------------------------------------------------- */
+
+/*
 These fixes are now ONLY seen by IE, so you don't have to worry
 about using prefixes, although it's best practice. For more info
 on using Modernizr classes, check out this link:
 http://www.modernizr.com/docs/
-******************************************************************/
+*/
 
 /* grid fixes for IE8 & older */
 .lt-ie9 {	

@@ -1,14 +1,11 @@
-/******************************************************************
-Site Name: 
-Author: 
-
+/*
 Stylesheet: Main Stylesheet
 
 Here's where the magic happens. Here, you'll see we are calling in
 the seperate functions for each media query. The base mobile 
 stylesheet is called in the header, so here we're working up from 
 there. To edit the css, just find the corresponding LESS file.
-******************************************************************/
+*/
 
 /*
 Base.css contains the main mobile styles and is called in the 
@@ -26,12 +23,16 @@ doesn't load the CSS, the CSS is loaded inside the media queries.
 @import "1030up.less";
 @import "1240up.less";
 
-/******************************************************************
-AVERAGE VIEWING SIZE 
+
+/* =Average Viewing Size
+-------------------------------------------------------------- */
+
+/*
 This is the average viewing window. So Desktops, Laptops, and 
 in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
-******************************************************************/
+*/
+
 @media only screen and (min-width: 481px) {
 	
 	/* styles in 481up.less */
@@ -39,12 +40,16 @@ you can add resource intensive styles.
 
 } /* end of media query */
 
-/******************************************************************
-TABLET & SMALLER LAPTOPS
+
+/* =Tablet and Smaller Laptops
+-------------------------------------------------------------- */
+
+/*
 This is the average viewing window. So Desktops, Laptops, and 
 in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
-******************************************************************/
+*/
+
 @media only screen and (min-width: 768px) {
 	
 	/* styles in 768up.less */
@@ -52,12 +57,15 @@ you can add resource intensive styles.
 
 } /* end of media query */
 
-/******************************************************************
-DESKTOP 
+/* =Desktop
+-------------------------------------------------------------- */
+
+/*
 This is the average viewing window. So Desktops, Laptops, and 
 in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
-******************************************************************/
+*/
+
 @media only screen and (min-width: 1030px) {
 	
 	/* styles in 1030up.less */
@@ -65,10 +73,13 @@ you can add resource intensive styles.
 
 } /* end of media query */
 
-/******************************************************************
-LARGE VIEWING SIZE 
+/* =Large Viewing Size
+-------------------------------------------------------------- */
+
+/*
 This is for the larger monitors and possibly full screen viewers.
-******************************************************************/
+*/
+
 @media only screen and (min-width: 1240px) {
 	
 	/* styles in 1240up.less */
@@ -76,12 +87,16 @@ This is for the larger monitors and possibly full screen viewers.
 
 } /* end of media query */
 
-/******************************************************************
-PRINT STYLESHEET
+
+/* =Print Stylesheet
+-------------------------------------------------------------- */
+
+/*
 Feel free to customize this. Remember to add things that won't make
 sense to print at the bottom. Things like nav, ads, and forms should
 be set to display none.
-******************************************************************/
+*/
+
 @media print { 
 	* { 
 		background: transparent !important; 
