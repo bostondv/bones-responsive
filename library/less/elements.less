@@ -134,3 +134,15 @@
   -ms-transform: translate(@x, @y);
   transform: translate(@x, @y);
 }
+.box-sizing(@args:border-box) {
+  -webkit-box-sizing: @args;
+  -moz-box-sizing: @args;
+  -ms-box-sizing: @args;
+  box-sizing: @args;
+}
+.background-size(@args:auto) {
+  -webkit-background-size: @args;
+  -moz-background-size: @args;
+  -ms-background-size: @args;
+  background-size: @args;
+}
