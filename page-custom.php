@@ -25,15 +25,10 @@ Template Name: Custom Page Example
 							</header> <!-- end article header -->
 						
 							<section class="post-content">
+								
 								<?php the_content(); ?>
 						
 							</section> <!-- end article section -->
-							
-							<footer>
-					
-								<p class="clearfix"><?php the_tags('<span class="tags">Tags: ', ', ', '</span>'); ?></p>
-								
-							</footer> <!-- end article footer -->
 						
 						</article> <!-- end article -->
 						
@@ -43,16 +38,7 @@ Template Name: Custom Page Example
 						
 						<?php else : ?>
 						
-						<article id="post-not-found">
-						    <header>
-						    	<h1>Not Found</h1>
-						    </header>
-						    <section class="post-content">
-						    	<p>Sorry, but the requested resource was not found on this site.</p>
-						    </section>
-						    <footer>
-						    </footer>
-						</article>
+							<?php get_template_part( 'loop', '404' ); ?>
 						
 						<?php endif; ?>
 					

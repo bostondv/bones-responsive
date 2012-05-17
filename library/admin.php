@@ -39,8 +39,6 @@ function disable_default_dashboard_widgets() {
 	https://github.com/eddiemachado/bones/issues
 	*/
 }
-
-// removing the dashboard widgets
 add_action('admin_menu', 'disable_default_dashboard_widgets');
 
 

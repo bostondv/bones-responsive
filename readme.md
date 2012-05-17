@@ -1,39 +1,18 @@
-# Example project name
-This is an example project created for demoing how documentation should be written.
+# Bones
 
 ## Installation
 
-Just copy this template into your projects `readme.md` file in the root directory. Edit this wiki page to see the markdown source.
-
 ## Requirements
 
-- A project repository to put this in
 - [WordPress](http://wordpress.org/)
-- [Media Library Categories](http://wordpress.org/extend/plugins/media-library-categories/)
 
-## Features
+## About
 
-### Random Rotating Banners
-On each page load, the site will grab a random image from that group and make a banner. These can be managed from the Wordpress admin.
-    
-** Settings: **
-
-- Install [Media Library Categories Plugin](http://wordpress.org/extend/plugins/media-library-categories/)
-- Create a media category named "banners"
-- Add some images to this category
-
-** Requirements: **
-
-- Ensure banner images are at least 960x250px
-
-## About the theme
-
-** Based on: **
+Based on:
 Bones Responsive Edition  
 A Lightweight Wordpress Development Theme  
 Developed by Eddie Machado  
-<http://themble.com/bones>  
-<eddie@themble.com>  
+<http://themble.com/bones> 
 
 Bones is designed to make the life of developers easier. It's built
 using HTML5 & has a strong semantic foundation. It was updated recently

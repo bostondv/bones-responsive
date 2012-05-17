@@ -48,21 +48,14 @@ single-bookmarks.php
 						</article> <!-- end article -->
 						
 						<?php comments_template(); ?>
+
+						<?php get_template_part( 'section', 'pagination' ); ?>		
 						
-						<?php endwhile; ?>			
+						<?php endwhile; ?>
 						
 						<?php else : ?>
 						
-						<article id="post-not-found">
-						    <header>
-						    	<h1>Not Found</h1>
-						    </header>
-						    <section class="post-content">
-						    	<p>Sorry, but the requested resource was not found on this site.</p>
-						    </section>
-						    <footer>
-						    </footer>
-						</article>
+							<?php get_template_part( 'loop', '404' ); ?>
 						
 						<?php endif; ?>
 					

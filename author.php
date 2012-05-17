@@ -6,7 +6,7 @@
 			
 					<div id="main" class="eightcol clearfix" role="main">
 					
-						<h1 class="archive_title h2">
+						<h1>
 							<span><?php _e("Posts By:", "bonestheme"); ?></span> 
 							<!-- google+ rel=me function -->
 							<?php $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
@@ -24,7 +24,7 @@
 							
 							<header>
 								
-								<h3 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+								<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 								
 								<p class="meta"><?php _e("Posted", "bonestheme"); ?> <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php the_time('F jS, Y'); ?></time> <?php _e("by", "bonestheme"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("filed under", "bonestheme"); ?> <?php the_category(', '); ?>.</p>
 							
@@ -37,41 +37,16 @@
 								<?php the_excerpt(); ?>
 						
 							</section> <!-- end article section -->
-							
-							<footer>
-								
-							</footer> <!-- end article footer -->
 						
 						</article> <!-- end article -->
 						
 						<?php endwhile; ?>	
 						
-						<?php if (function_exists('page_navi')) { // if expirimental feature is active ?>
-							
-							<?php page_navi(); // use the page navi function ?>
-					
-						<?php } else { // if it is disabled, display regular wp prev & next links ?>
-							<nav class="wp-prev-next">
-								<ul class="clearfix">
-									<li class="next-link"><?php next_posts_link(__('&laquo; Older Entries', "bonestheme")) ?></li>
-									<li class="prev-link"><?php previous_posts_link(__('Newer Entries &raquo;', "bonestheme")) ?></li>
-								</ul>
-							</nav>
-						<?php } ?>
-									
+						<?php get_template_part( 'section', 'pagination' ); ?>	
 						
 						<?php else : ?>
 						
-						<article id="post-not-found">
-						    <header>
-						    	<h1><?php _e("No Posts Yet", "bonestheme"); ?></h1>
-						    </header>
-						    <section class="post-content">
-						    	<p><?php _e("Sorry, What you were looking for is not here.", "bonestheme"); ?></p>
-						    </section>
-						    <footer>
-						    </footer>
-						</article>
+							<?php get_template_part( 'loop', '404' ); ?>
 						
 						<?php endif; ?>
 					
