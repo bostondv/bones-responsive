@@ -5,17 +5,18 @@
 				<div id="inner-content" class="wrap clearfix">
 			
 					<div id="main" class="eightcol clearfix" role="main">
-					
-						<h1 class="auhtor-title">
+						
+						<h1 class="archive-title">
 							<span><?php _e("Posts By:", "bonestheme"); ?></span> 
+								
 							<!-- google+ rel=me function -->
 							<?php $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
 							$google_profile = get_the_author_meta( 'google_profile', $curauth->ID );
 							if ( $google_profile ) {
-								echo '<a href="' . esc_url( $google_profile ) . '" rel="me">' . $curauth->display_name . '</a>'; ?></a>
-							<?php } else { ?>
-							<?php echo get_the_author_meta('display_name'); ?>
-							<?php } ?>
+								echo '<a href="' . esc_url( $google_profile ) . '" rel="me">' . $curauth->display_name . '</a>';
+							} else {
+								echo $curauth->display_name;
+							} ?>
 						</h1>
 						
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

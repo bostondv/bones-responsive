@@ -15,9 +15,12 @@
 								<span><?php _e("Posts Tagged:", "bonestheme"); ?></span> <?php single_tag_title(); ?>
 							</h1>
 						<?php } elseif (is_author()) { ?>
+							<?php $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author')); ?>
 							<h1 class="archive-title">
-								<span><?php _e("Posts By:", "bonestheme"); ?></span> <?php get_the_author_meta('display_name'); ?>
+								<span><?php _e("Posts By:", "bonestheme"); ?></span> 
+								<?php echo $curauth->display_name; ?>
 							</h1>
+							<p><?php echo $curauth->description; ?></p>
 						<?php } elseif (is_day()) { ?>
 							<h1 class="archive-title">
 								<span><?php _e("Daily Archives:", "bonestheme"); ?></span> <?php the_time('l, F j, Y'); ?>
