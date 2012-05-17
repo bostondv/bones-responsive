@@ -45,11 +45,15 @@ function bones_queue_high_js_and_css() {
       wp_enqueue_script( 'comment-reply' );
     }
 
-	//adding scripts file in the footer
+    //fitvids.js
+    wp_register_script( 'fitvids', get_template_directory_uri() . '/library/js/libs/jquery.fitvids.js', array( 'modernizr', 'jquery' ), filemtime(get_template_directory() . '/library/js/libs/jquery.fitvids.js'), true );
+    wp_enqueue_script( 'fitvids' );
+
+		//adding scripts file in the footer
     wp_register_script( 'bones-js', get_template_directory_uri() . '/library/js/scripts.js', array( 'modernizr', 'jquery' ), filemtime(get_template_directory() . '/library/js/scripts.js'), true );
     wp_enqueue_script( 'bones-js' );
 
-	// register mobile stylesheet
+		// register mobile stylesheet
     wp_register_style( 'bones-base', get_template_directory_uri() . '/library/css/base.css', array(), filemtime(get_template_directory() . '/library/css/base.css'), 'all' );
     wp_enqueue_style( 'bones-base' );
   }
