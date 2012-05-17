@@ -6,7 +6,7 @@
 			
 					<div id="main" class="eightcol clearfix" role="main">
 					
-						<h1>
+						<h1 class="auhtor-title">
 							<span><?php _e("Posts By:", "bonestheme"); ?></span> 
 							<!-- google+ rel=me function -->
 							<?php $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
