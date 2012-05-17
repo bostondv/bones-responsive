@@ -44,10 +44,18 @@
 				<div id="inner-header" class="wrap clearfix">
 				
 					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-					<p id="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<?php if( is_front_page() ) : ?>
+
+						<h1 id="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
+
+					<?php else : ?>
+						
+						<p id="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+
+					<?php endif; ?>
 					
 					<!-- if you'd like to use the site description you can un-comment it below -->
-					<?php // bloginfo('description'); ?>
+					<?php bloginfo('description'); ?>
 					
 					<nav role="navigation" class="nav">
 						<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>

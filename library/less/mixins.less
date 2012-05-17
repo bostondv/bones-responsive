@@ -48,10 +48,10 @@ remember less is more. See what I did there? Nice.
 /* =Colors
 -------------------------------------------------------------- */
 
-@yellow: #ebe16f;
-@red: #fbe3e4;
-@green: #e6efc2;
-@blue: #d5edf8;
+@yellow: #F2D96B;
+@red: #C71E1E;
+@green: #23C71E;
+@blue: #1E64C7;
 
 @black: #000;
 @grayDarker: lighten(@black, 10%);
@@ -77,7 +77,8 @@ remember less is more. See what I did there? Nice.
 /* =Buttons
 -------------------------------------------------------------- */
 
-.buttons(@bg:#63b51b, @highlight:#bbe258,  @border:#bbe258, @color:#fff, @padding:0.25em 0.5em, @size:1.2em) {
+.buttons(@bg:#1E64C7, @border:#1E64C7, @color:#fff, @padding:0.25em 0.5em, @size:1.2em) {
+	background: @bg;
 	border: 1px solid @border;
 	border-top-color: lighten(@border, 10%);
 	padding: @padding;
@@ -86,14 +87,9 @@ remember less is more. See what I did there? Nice.
 	display: inline-block;
 	font-weight: 600;
 	text-decoration: none;
-	text-shadow: 0 0.1em 0 rgba(0,0,0, 0.25);
 	cursor: pointer;
 	margin-bottom: 1rem;
 	line-height: 1.5;
-	.transition(0.1s);
-	.rounded(0.5rem);
-	.gradient(@bg, @bg, @highlight);
-	.drop-shadow(0, 0.1em, 0.5em, 1);
 	&:visited {
 		color: @color;
 	}
@@ -101,12 +97,12 @@ remember less is more. See what I did there? Nice.
 		color: @color;
   	border: 1px solid darken(@border, 20%);
   	border-top-color: darken(@border, 20%);
-		.gradient(darken(@bg, 10%), darken(@bg, 10%), darken(@highlight, 10%));
+		background: darken(@bg, 10%);
 	}
 	&:active {
 		border: 1px solid darken(@border, 30%);
   	border-top-color: darken(@border, 30%);
-		.gradient(darken(@bg, 20%), darken(@bg, 20%), darken(@highlight, 20%));
+		background: darken(@bg, 20%);
 	}
 	a {
 		color: @color;
@@ -167,8 +163,8 @@ span.amp {
 -------------------------------------------------------------- */
 
 .help, .info, .error, .success { 
-	margin: 1em; 
-	padding: 0.5em 1em; 
+	margin: 0 0 1em; 
+	padding: 1em 1em 0; 
 	border: 1px solid; 
 }
 

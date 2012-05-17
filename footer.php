@@ -6,7 +6,7 @@
 						<?php bones_footer_links(); // Adjust using Menus in Wordpress Admin ?>
 					</nav>
 			
-					<p class="attribution">&copy; <?php bloginfo('name'); ?>.</p>
+					<p class="attribution">&copy; <?php bloginfo('name'); ?></p>
 				
 				</div> <!-- end #inner-footer -->
 				
@@ -14,7 +14,7 @@
 		
 		</div> <!-- end #container -->
 		
-		<?php wp_footer(); // js scripts are inserted using this function ?>
+		<?php wp_footer(); ?>
 
 	</body>
 
