@@ -1,7 +1,4 @@
-/******************************************************************
-Site Name: 
-Author: 
-
+/*
 Stylesheet: Tablet & Small Desktop Stylesheet
 
 Here's where you can start getting into the good stuff.
@@ -9,8 +6,10 @@ This size will work on iPads, other tablets, and desktops.
 So you can start working with more styles, background images,
 and other resources. You'll also notice the grid starts to
 come into play. Have fun!
+*/
 
-******************************************************************/
+@import "mixins.less";
+@import "elements.less";
 
 /* 
 wrapping styles in a function so we can call it
@@ -21,16 +20,15 @@ IE will get all the styles without any hefty work.
 
 .768up() { /* DO NOT DELETE */
 
-/*********************
-GENERAL STYLES
-*********************/
+
+/* =General Styles
+-------------------------------------------------------------- */
 
 body {}
 
-/********************
-WORDPRESS BODY CLASSES
-style a page via class
-********************/
+
+/* =WordPress Body classes
+-------------------------------------------------------------- */
 
 .rtl {}
 .home {} /* home page */
@@ -68,9 +66,9 @@ style a page via class
 .paged {} /* paged items like search results or archives */
 	.paged-1 {} /* individual paged (i.e. body.paged-3) */
 
-/*********************
-LAYOUT & GRID STYLES
-*********************/
+
+/* =Layout
+-------------------------------------------------------------- */
 
 .wrap {
 	max-width: 960px;
@@ -109,24 +107,24 @@ LAYOUT & GRID STYLES
 		float: right;
 	}
 
-/*********************
-HEADER SYTLES
-*********************/
+
+/* =Header
+-------------------------------------------------------------- */
 
 .header {}
 
 	#logo {}
 	
-/*********************
-NAVIGATION STYLES
-*********************/
+
+/* =Navigation
+-------------------------------------------------------------- */
 
 .nav {}
 
 	/* .menu is clearfixed inside mixins.less */
 	.menu {
 		ul {
-			background: #eee; 
+			background: @grayLight; 
 			
 			li {
 				float: left;
@@ -140,7 +138,7 @@ NAVIGATION STYLES
 					has the possibility of bieng a mobile device.
 					*/
 					&:hover, &:focus {
-						background-color: #dedede;
+						background-color: @grayLight;
 					
 					}
 				}
@@ -153,8 +151,8 @@ NAVIGATION STYLES
 				*/
 				ul.sub-menu,
 				ul.children {
-					width: 200px;
-					border: 1px solid #ccc;
+					width: 20em;
+					border: 1px solid @gray;
 					border-top: 0;
 					position: absolute;
 					display: none;
@@ -162,11 +160,11 @@ NAVIGATION STYLES
 						
 					li {
 						a {
-							padding-left: 10px;
+							padding-left: 1em;
 							border-right: 0;
 							display: block;
-							width: 180px;
-							border-bottom: 1px solid #ccc;
+							width: 18em;
+							border-bottom: 1px solid @gray;
 							
 							&:hover,
 							&:focus {}
@@ -213,9 +211,9 @@ NAVIGATION STYLES
 	} /* end .menu */
 
 
-/*********************
-POSTS & CONTENT STYLES
-*********************/
+
+/* =Post Content
+-------------------------------------------------------------- */
 
 #content {}
 	
@@ -300,9 +298,9 @@ POSTS & CONTENT STYLES
 		.size-medium {}
 		.size-thumbnail {}
 
-/******************************************************************
-PAGE NAVI STYLES
-******************************************************************/
+
+/* =Pagination
+-------------------------------------------------------------- */
 
 .page-navigation, 
 .wp-prev-next {}
@@ -373,9 +371,9 @@ PAGE NAVI STYLES
 		.next-link {}
 	} /* end .wp-prev-next */
 
-/******************************************************************
-COMMENT STYLES
-******************************************************************/
+
+/* =Comments
+-------------------------------------------------------------- */
 
 /* h3 comment title */
 #comments {
@@ -472,9 +470,9 @@ COMMENT STYLES
 		
 } /* end .commentlist */
 
-/******************************************************************
-COMMENT FORM STYLES
-******************************************************************/
+
+/* =Comment form
+-------------------------------------------------------------- */
 
 .respond-form {
 	form {
@@ -519,26 +517,24 @@ COMMENT FORM STYLES
 	/* no comments */
 	.nocomments {}		
 
-/*********************
-SIDEBARS & ASIDES
-*********************/
 
-.sidebar {
-	margin-top: 2.2em;
-}
+/* =Sidebar and asides
+-------------------------------------------------------------- */
+
+.sidebar {}
 
 	.widgettitle {
-		border-bottom: 2px solid #444;
-		margin-bottom: 0.75em;
+		border-bottom: 2px solid @grayLight;
+		margin: 0 0 1em;
 	}
 
 	.widget {
-		padding: 0 10px;
-		margin: 2.2em 0;
+		padding: 0 1em;
+		margin: 0 0 1em;
 		
 		ul {
 			li {
-				margin-bottom: 0.75em;
+				margin-bottom: 1em;
 				
 				&:first-child {}
 				&:last-child {}
@@ -546,7 +542,6 @@ SIDEBARS & ASIDES
 				/* deep nesting */
 				
 				ul {
-					margin-top: 0.75em;
 					padding-left: 1em;
 				}
 			}
@@ -641,9 +636,8 @@ SIDEBARS & ASIDES
 	.textwidget p {}
 	
 
-/*********************
-FOOTER STYLES
-*********************/
+/* =Footer
+-------------------------------------------------------------- */
 
 .footer {}
 	
