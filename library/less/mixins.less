@@ -1,4 +1,4 @@
-/******************************************************************
+/*
 Site Name: 
 Author: 
 
@@ -15,23 +15,26 @@ A WORD OF WARNING: It's very easy to overdo it here. Be careful and
 remember less is more. See what I did there? Nice.
 
 Helpful Articles or Links:
+*/
 
-******************************************************************/
 
-/*********************
-TOOLS
-*********************/
+/* =Tools
+-------------------------------------------------------------- */
 
 /* http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/ */
-.image-replacement {
+.ir {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 }
 
-/*********************
-CLEARFIXIN'
-*********************/
+/* Hidden object alternative to display:none */
+.notvisible {
+	visibility: hidden;
+	height: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
 
 /* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
 .clearfix { 
@@ -46,76 +49,78 @@ CLEARFIXIN'
 	zoom: 1; 
 }
 
-/*********************
-COLORS
-*********************/
 
-@yellow:            #ebe16f;
-@red:               #fbe3e4;
-@green:             #e6efc2;
-@blue:              #d5edf8;
+/* =Colors
+-------------------------------------------------------------- */
 
-@black:             #000;
-@grayDarker:        lighten(@black, 10%);
-@grayDark:          lighten(@black, 25%);
-@gray:              lighten(@black, 50%);
-@grayLight:         lighten(@black, 75%);
-@grayLighter:       lighten(@black, 90%);
-@white:             #fff;
+@yellow: #ebe16f;
+@red: #fbe3e4;
+@green: #e6efc2;
+@blue: #d5edf8;
+
+@black: #000;
+@grayDarker: lighten(@black, 10%);
+@grayDark: lighten(@black, 25%);
+@gray: lighten(@black, 50%);
+@grayLight: lighten(@black, 75%);
+@grayLighter: lighten(@black, 90%);
+@white: #fff;
 
 /* this is pulled from Bootstrap */
-@baseColor:         @blue;                  // Set a base color
-@complement:        spin(@baseColor, 180);  // Determine a complementary color
-@split1:            spin(@baseColor, 158);  // Split complements
-@split2:            spin(@baseColor, -158);
-@triad1:            spin(@baseColor, 135);  // Triads colors
-@triad2:            spin(@baseColor, -135);
-@tetra1:            spin(@baseColor, 90);   // Tetra colors
-@tetra2:            spin(@baseColor, -90);
-@analog1:           spin(@baseColor, 22);   // Analogs colors
-@analog2:           spin(@baseColor, -22);
+@baseColor: @blue;                  // Set a base color
+@complement: spin(@baseColor, 180);  // Determine a complementary color
+@split1: spin(@baseColor, 158);  // Split complements
+@split2: spin(@baseColor, -158);
+@triad1: spin(@baseColor, 135);  // Triads colors
+@triad2: spin(@baseColor, -135);
+@tetra1: spin(@baseColor, 90);   // Tetra colors
+@tetra2: spin(@baseColor, -90);
+@analog1: spin(@baseColor, 22);   // Analogs colors
+@analog2: spin(@baseColor, -22);
 
 
-/*********************
-BUTTONS
-*********************/
+/* =Buttons
+-------------------------------------------------------------- */
 
-.button, .button:visited {
-	border: 1px solid darken(@blue, 13%);
-	border-top-color: darken(@blue, 7%);
-	border-left-color: darken(@blue, 7%);
-	padding: 4px 12px;
-	color: @white;
+.buttons(@bg:#63b51b, @highlight:#bbe258,  @border:#bbe258, @color:#fff, @padding:0.25em 0.5em, @size:1.2em) {
+	border: 1px solid @border;
+	border-top-color: lighten(@border, 10%);
+	padding: @padding;
+	font-size: @size;
+	color: @color;
 	display: inline-block;
-	font-size: 11px;
-	font-weight: bold;
+	font-weight: 600;
 	text-decoration: none;
-	text-shadow: 0 1px rgba(0,0,0, .75);
+	text-shadow: 0 0.1em 0 rgba(0,0,0, 0.25);
 	cursor: pointer;
-	margin-bottom: 20px;
-	line-height: 21px;
-	.transition();
-	.borderRadius(4px);
-	.css-gradient(@blue,darken(@blue, 5%));
-
+	margin-bottom: 1rem;
+	line-height: 1.5;
+	.transition-duration(0.1s);
+	.rounded(0.5rem);
+	.gradient(@bg, @bg, @highlight);
+	.drop-shadow(0, 0.1em, 0.5em, 1);
+	&:visited {
+		color: @color;
+	}
 	&:hover, &:focus {
-		color: @white;
-	  	border: 1px solid darken(@blue, 13%);
-	  	border-top-color: darken(@blue, 20%);
-	 	border-left-color: darken(@blue, 20%);
-		.css-gradient(darken(@blue, 5%),darken(@blue, 10%));
+		color: @color;
+  	border: 1px solid darken(@border, 20%);
+  	border-top-color: darken(@border, 20%);
+		.gradient(darken(@bg, 10%), darken(@bg, 10%), darken(@highlight, 10%));
 	}
-	
 	&:active {
-		.css-gradient(darken(@blue, 5%),@blue);
+		border: 1px solid darken(@border, 30%);
+  	border-top-color: darken(@border, 30%);
+		.gradient(darken(@bg, 20%), darken(@bg, 20%), darken(@highlight, 20%));
 	}
-		
+	a {
+		color: @color;
+	}		
 }
 
 
-/*********************
-TYPOGRAPHY
-*********************/
+/* =Typography
+-------------------------------------------------------------- */
 
 .sans-serif { 
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
@@ -124,12 +129,13 @@ TYPOGRAPHY
 	font-family: "Georgia", Cambria, Times New Roman, Times, serif; 
 }
 
-/* 	To embed your own fonts, use this syntax
-	and place your fonts inside the 
-	library/fonts folder. For more information
-	on embedding fonts, go to:
-	http://www.fontsquirrel.com/
-	Be sure to remove the comment brackets.
+/* 	
+To embed your own fonts, use this syntax
+and place your fonts inside the 
+library/fonts folder. For more information
+on embedding fonts, go to:
+http://www.fontsquirrel.com/
+Be sure to remove the comment brackets.
 */
 
 /*	@font-face {
@@ -159,13 +165,12 @@ span.amp {
 .text-right { text-align: right; }
 
 
-/*********************
-ALERTS & NOTICES
-*********************/
+/* =Alerts & Notices
+-------------------------------------------------------------- */
 
 .help, .info, .error, .success { 
-	margin: 10px; 
-	padding: 5px 18px; 
+	margin: 1em; 
+	padding: 0.5em 1em; 
 	border: 1px solid; 
 }
 
